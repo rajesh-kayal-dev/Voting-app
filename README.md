@@ -35,18 +35,19 @@
 git clone https://github.com/Prince-1501/voting_app.git
 Navigate to the project folder:
 
-bash
+Edit
 cd voting_app
 Install dependencies:
 
-bash
+
 npm install
 Create a .env file and add your MongoDB URI and JWT secret:
 
-env
+
 MONGODB_URI=your_mongodb_uri
 JWT_SECRET=your_jwt_secret
 Start the server:
+
 
 npm start
 📡 API Endpoints
@@ -79,4 +80,4 @@ This project is open-source and available under the MIT License.
 Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
 📬 Contact
-For any issues or suggestions, please reach out to the repository owner.
+For any issues or suggestions, please reach out rajesh-kayal-dev || https://www.linkedin.com/in/rajesh110/.
