@@ -7,6 +7,15 @@ const {jwtAuthenticate, generateToken} = require('../jwt');
 router.post('/signup', async (req, res) => {
     try{
         const data = req.body;
+
+        if( data.role === 'admin'){
+            const existAdmin = await User.findOne({role: 'admin'});
+
+            if(existAdmin){
+                return res.status(403).json({error: 'Forbidden: Only one admin can be created'});
+            }
+        }
+        
         const newUser = new User(data);
         const response = await newUser.save();
 
@@ -35,37 +44,44 @@ router.post('/signup', async (req, res) => {
 
 
 router.post('/login', async (req, res) => {
-    try {
-        // Extract username and password from request body
-        const { adharCardNumber, password } = req.body;
+  try {
+    const { adharCardNumber, password } = req.body;
 
-        // Find the User by username
-        const user = await User.findOne({ adharCardNumber: adharCardNumber });
-       
-
-        if (!user || !(await user.comparePassword(password))) {
-            return res.status(401).json({ error: 'Invalid username or password' });
-        }
-        
-        //generate JWT token
-
-        const payload = {
-            id: user._id
-        };
-
-        const token = generateToken(payload);
-
-        res.status(200).json({
-            message: 'Login successful',
-            User: user,
-            token: token
-        });
-    } catch (error) {
-        console.log(error);
-        return res.status(500).json({error: 'Internal Server Error'});
+    // Check if both fields are provided
+    if (!adharCardNumber || !password) {
+      return res.status(400).json({ error: 'Adhar card number and password are required' });
     }
-    
-})
+
+    // Find user by adharCardNumber
+    const user = await User.findOne({ adharCardNumber });
+
+    if (!user) {
+      return res.status(401).json({ error: 'Invalid adhar card number or password' });
+    }
+
+    // Compare the password
+    const isMatch = await user.comparePassword(password);
+
+    if (!isMatch) {
+      return res.status(401).json({ error: 'Invalid adhar card number or password' });
+    }
+
+    // Generate JWT token
+    const token = generateToken({ id: user._id });
+
+    // Return response
+    res.status(200).json({
+      message: 'Login successful',
+      user,
+      token
+    });
+
+  } catch (error) {
+    console.error('Login error:', error);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 
 
 router.get('/profile', jwtAuthenticate, async (req, res) => {
