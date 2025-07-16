@@ -1,44 +1,82 @@
-Voting Application
-This is a backend application for a voting system where users can vote for candidates. It provides functionalities for user authentication, candidate management, and voting.
+# 🗳️ Voting Application (Backend)
 
-Features
-User sign up and login with Aadhar Card Number and password
-User can view the list of candidates
-User can vote for a candidate (only once)
-Admin can manage candidates (add, update, delete)
-Admin cannot vote
-Technologies Used
-Node.js
-Express.js
-MongoDB
-JSON Web Tokens (JWT) for authentication
-Installation
-Clone the repository:
+This is a backend application for a voting system where users can vote for candidates. It includes secure user authentication, candidate management, and voting functionalities.
 
+---
+
+## 🚀 Features
+
+- User **sign up** and **login** with Aadhar Card Number and password  
+- User can **view all candidates**  
+- User can **vote only once**  
+- **Admin** can:
+  - Add new candidates  
+  - Update candidate details  
+  - Delete candidates  
+- Admin **cannot vote**
+
+---
+
+## 🛠️ Technologies Used
+
+- **Node.js**  
+- **Express.js**  
+- **MongoDB**  
+- **Mongoose**  
+- **JWT (JSON Web Token)** – for secure authentication
+
+---
+
+## 📦 Installation
+
+1. Clone the repository:
+
+```bash
 git clone https://github.com/Prince-1501/voting_app.git
+Navigate to the project folder:
 
-API Endpoints
-Authentication
-Sign Up
-POST /signup: Sign up a user
-Login
-POST /login: Login a user
-Candidates
-Get Candidates
-GET /candidates: Get the list of candidates
-Add Candidate
-POST /candidates: Add a new candidate (Admin only)
-Update Candidate
-PUT /candidates/:id: Update a candidate by ID (Admin only)
-Delete Candidate
-DELETE /candidates/:id: Delete a candidate by ID (Admin only)
-Voting
-Get Vote Count
-GET /candidates/vote/count: Get the count of votes for each candidate
-Vote for Candidate
-POST /candidates/vote/:id: Vote for a candidate (User only)
-User Profile
-Get Profile
-GET /users/profile: Get user profile information
-Change Password
-PUT /users/profile/password: Change user password
+cd voting_app
+Install dependencies:
+
+
+npm install
+Create a .env file and add your MongoDB URI and JWT secret:
+
+env
+MONGODB_URI=your_mongodb_uri
+JWT_SECRET=your_jwt_secret
+Start the server:
+
+npm start
+📡 API Endpoints
+🔐 Authentication
+Method	Endpoint	Description
+POST	/signup	Sign up a user
+POST	/login	Login a user
+
+🎯 Candidates
+Method	Endpoint	Description
+GET	/candidates	Get list of all candidates
+POST	/candidates	Add new candidate (Admin only)
+PUT	/candidates/:id	Update a candidate (Admin only)
+DELETE	/candidates/:id	Delete a candidate (Admin only)
+
+🗳️ Voting
+Method	Endpoint	Description
+GET	/candidates/vote/count	Get vote count for all candidates
+POST	/candidates/vote/:id	Vote for a candidate (User only)
+
+👤 User Profile
+Method	Endpoint	Description
+GET	/users/profile	Get logged-in user profile
+PUT	/users/profile/password	Change user password
+
+📝 License
+This project is open-source and available under the MIT License.
+
+🤝 Contributing
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+
+📬 Contact
+For any issues or suggestions, please reach out to the repository owner.
+
