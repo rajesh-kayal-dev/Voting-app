@@ -1,14 +1,14 @@
-# 🗳️ Voting Application (Backend)
+# 🗳️ TrueVote (Backend Voting System)
 
-This is a backend application for a voting system where users can vote for candidates. It includes secure user authentication, candidate management, and voting functionalities.
+**TrueVote** is a backend application for a secure and simple voting system. Users can vote for their preferred candidates, while administrators manage candidate details. The system ensures authenticated and one-time voting only.
 
 ---
 
 ## 🚀 Features
 
 - User **sign up** and **login** with Aadhar Card Number and password  
-- User can **view all candidates**  
-- User can **vote only once**  
+- Users can **view all candidates**  
+- Users can **vote only once**  
 - **Admin** can:
   - Add new candidates  
   - Update candidate details  
@@ -35,10 +35,11 @@ This is a backend application for a voting system where users can vote for candi
 git clone https://github.com/Prince-1501/voting_app.git
 Navigate to the project folder:
 
+bash
 cd voting_app
 Install dependencies:
 
-
+bash
 npm install
 Create a .env file and add your MongoDB URI and JWT secret:
 
@@ -79,4 +80,3 @@ Pull requests are welcome! For major changes, please open an issue first to disc
 
 📬 Contact
 For any issues or suggestions, please reach out to the repository owner.
-
